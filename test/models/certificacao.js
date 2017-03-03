@@ -22,7 +22,7 @@ describe('# Teste da classe certificação', function() {
             
         }); 
 
-        it('## Submissão da avaliação', function() {
+        it('## Submissão da avaliação -VÁLIDO', function() {
             var aluno = new Aluno ('Bob esponja');
             var disciplina =  new Array('interfaces ricas','web design');
             var professores = new Array("prof1","prof2","prof3");
@@ -39,7 +39,49 @@ describe('# Teste da classe certificação', function() {
             
            x.should.belowOrEqual(7); 
            //console.log(DataPublicacao);
-            var submissao = solicitarCertificacao.submissaoDaAvaliacao(DataPublicacao,arquivo);
+            var submissao = solicitarCertificacao.submissaoDaAvaliacao(DataSolicitar,DataPublicacao,arquivo);
+            submissao.should.be.eql(true);
+           
+        }); 
+
+         it('## Submissão da avaliação -INVÁLIDO', function() {
+            var aluno = new Aluno ('Bob esponja');
+            var disciplina =  new Array('interfaces ricas','web design');
+            var professores = new Array("prof1","prof2","prof3");
+            var curso = new Curso('tads');
+            var DataSolicitacao = new Date("2/3/2017"); 
+            var solicitarCertificacao = new Certificacao(aluno,disciplina,curso,professores,DataSolicitacao);
+            //variavel que simula a quantidade de dias depois q foi feito upload da prova no sistema
+            var x = 9; 
+            
+            var DataSolicitar = (DataSolicitacao.getDate());
+            var DataPublicacao = (DataSolicitacao.getDate()) + x;
+           // console.log((DataSolicitacao.getDate()));
+            var arquivo = ('arquivo.txt');
+            
+          // x.should.belowOrEqual(7); 
+           //console.log(DataPublicacao);
+            var submissao = solicitarCertificacao.submissaoDaAvaliacao(DataSolicitar,DataPublicacao,arquivo);
+            submissao.should.be.eql(true);
+           
+        }); 
+
+        it('## Notificação ao aluno - VÁLIDO', function() {
+            var aluno = new Aluno ('Bob esponja');
+            var disciplina =  new Array('interfaces ricas','web design');
+            var professores = new Array("prof1","prof2","prof3");
+            var curso = new Curso('tads');
+            var DataSolicitacao = new Date("2/3/2017"); 
+            var solicitarCertificacao = new Certificacao(aluno,disciplina,curso,professores,DataSolicitacao);
+            //variavel que simula a quantidade de dias depois q foi feito upload da prova no sistema
+            var x = 9; 
+            
+            var DataSolicitar = (DataSolicitacao.getDate());
+            var DataPublicacao = (DataSolicitacao.getDate()) + x;
+
+            var dataNotificacao = (DataPublicacao + 5);
+
+            var submissao = solicitarCertificacao.notificacaoAluno(dataNotificacao);
             submissao.should.be.eql(true);
            
         }); 

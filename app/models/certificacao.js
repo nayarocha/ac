@@ -25,8 +25,7 @@ Certificacao.prototype.submissaoDaAvaliacao = function(DataPublicacao,arquivo){
     if(((prazo) <= 7)){
         var avaliacao = new Array(DataPublicacao,arquivo);
         this.situacao = 'avaliação publicada';
-        this.avaliacao = avaliacao;
-       
+        this.avaliacao = avaliacao;     
     return true;
     
     }else{
