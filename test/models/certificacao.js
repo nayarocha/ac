@@ -25,20 +25,21 @@ describe('# Teste da classe certificação', function() {
         it('## Submissão da avaliação', function() {
             var aluno = new Aluno ('Bob esponja');
             var disciplina =  new Array('interfaces ricas','web design');
+            var professores = new Array("prof1","prof2","prof3");
             var curso = new Curso('tads');
             var DataSolicitacao = new Date("2/3/2017"); 
-            
+            var solicitarCertificacao = new Certificacao(aluno,disciplina,curso,professores,DataSolicitacao);
             //variavel que simula a quantidade de dias depois q foi feito upload da prova no sistema
-            var x = 4; 
+            var x = 6; 
             
             var DataPublicacao = (DataSolicitacao.getDate()) + x;
+            console.log((DataSolicitacao.getDate()));
             var arquivo = ('arquivo.txt');
-
+            
             x.should.belowOrEqual(7); 
-            console.log(DataPublicacao);
-           
+           console.log(DataPublicacao);
             var submissao = solicitarCertificacao.submissaoDaAvaliacao(DataPublicacao,arquivo);
-            submissao.should.not.be.empty();
+            submissao.should.be.eql(true);
            
         }); 
     });   
