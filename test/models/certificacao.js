@@ -7,8 +7,9 @@ var Certificacao = require('../../app/models/certificacao')
 var Curso = require('../../app/models/curso.js')
 
 describe('# Teste da classe certificação', function() {
-    describe('## Construtores', function() {
-        it('Solicitação de Certificacao - Válido - até 4 disciplinas', function() {
+    describe('--- CERTIFICAÇÃO ---', function() {
+       
+        it('# Solicitação de Certificacao - Válido - até 4 disciplinas', function() {
             var curso = new Curso('tads',2160);
             var aluno = new Aluno ('Bob esponja','201339402042',curso);
             var disciplina =  new Array('interfaces ricas','web design'); 
@@ -18,23 +19,28 @@ describe('# Teste da classe certificação', function() {
             professores.length.should.be.equal(3);
             disciplina.length.should.be.within(0, 4);
             solicitarCertificacao.should.not.be.empty();
-            console.log(solicitarCertificacao);
+            
         }); 
 
-        /*it('Confeccao da avaliacao e upload da prova', function() {
+        it('## Submissão da avaliação', function() {
             var aluno = new Aluno ('Bob esponja');
             var disciplina =  new Array('interfaces ricas','web design');
             var curso = new Curso('tads');
-            var DataSolicitacao = new Date(2017,3,2);
+            var DataSolicitacao = new Date("2/3/2017"); 
             
-            var prazo = (DataSolicitacao.getDate()) + 5;
-            var solicitarCertificacao = new Certificacao(aluno,disciplina,curso,DataSolicitacao);
+            //variavel que simula a quantidade de dias depois q foi feito upload da prova no sistema
+            var x = 4; 
             
-           
+            var DataPublicacao = (DataSolicitacao.getDate()) + x;
             var arquivo = ('arquivo.txt');
-            var andamento = solicitarCertificacao.andamentoCertificacao(professores,prazo,arquivo);
-            console.log(andamento);
-        });*/ 
+
+            x.should.belowOrEqual(7); 
+            console.log(DataPublicacao);
+           
+            var submissao = solicitarCertificacao.submissaoDaAvaliacao(DataPublicacao,arquivo);
+            submissao.should.not.be.empty();
+           
+        }); 
     });   
 });
 

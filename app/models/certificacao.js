@@ -11,21 +11,11 @@ var Certificacao = function(aluno,disciplina,curso,professores,DataSolicitacao){
     if(disciplina.length > 4){
         throw new Error ('O aluno só pode se inscrever em até 4 disciplinas por semestre');
     }
+
+    if(professores.length < 3){
+           throw new Error ('Deverá ser cadastrado 3 professores');
+    }
 };
 
-Certificacao.prototype.andamentoCertificacao = function(professores,data,uploadArquivo){
-   var andamentoCertificacao = this.Certificao(professores,data,uploadArquivo);
-   
-    /*if( (data.getDay() + 7) >  this.DataSolicitacao){
-        print(data.getDay());
-        var professores = new Array("prof 1","prof 2", "prof3");
-        var prova = ('arquivo.txt');
-
-    }else{
-          throw new Error ('passou do prazo');
-          print(data.getDay());
-    }*/
-
-}
 
 module.exports = Certificacao; 
