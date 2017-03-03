@@ -1,4 +1,4 @@
-var assert = require('assert');
+/*var assert = require('assert');
 var should = require('should');
 
 describe('Teste das ferramentas', function() {
@@ -23,4 +23,4 @@ describe('Teste das ferramentas', function() {
             (1).should.be.type('number');
         });
     });
-});
+});*/
