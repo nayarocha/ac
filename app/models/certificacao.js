@@ -2,7 +2,7 @@ var Certificacao = function(aluno,disciplina,curso,professores,DataSolicitacao){
     this.aluno = aluno;
     this.disciplina = disciplina;
     this.curso = curso;
-    this.DataSolicitacao;
+    this.DataSolicitacao = DataSolicitacao;
     this.DataPrazoPublicacao;
     this.DataDaProva;
     this.avaliacao = null;
@@ -19,20 +19,14 @@ var Certificacao = function(aluno,disciplina,curso,professores,DataSolicitacao){
 };
 
 Certificacao.prototype.submissaoDaAvaliacao = function(DataPublicacao,arquivo){
-    
-    var x = new Date(this.DataPublicacao); //dia 9
-    var i = x.getDate();
-
-    var y = new Date(this.DataSolicitacao); //dia 3
-    var z = y.getDate();
-    //dataPublic - dataSolicao = 9 -3 = 6 
+    var prazo = DataPublicacao - (this.DataSolicitacao.getDate());
+    //dataPublicacao - dataSolicitacao = 9 -3 = 6 
     //6 <= 7
-   
-
-    if(((7-3) <= 7)){
+    if(((prazo) <= 7)){
         var avaliacao = new Array(DataPublicacao,arquivo);
         this.situacao = 'avaliação publicada';
         this.avaliacao = avaliacao;
+       
     return true;
     
     }else{

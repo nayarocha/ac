@@ -32,12 +32,13 @@ describe('# Teste da classe certificação', function() {
             //variavel que simula a quantidade de dias depois q foi feito upload da prova no sistema
             var x = 6; 
             
+            var DataSolicitar = (DataSolicitacao.getDate());
             var DataPublicacao = (DataSolicitacao.getDate()) + x;
-            console.log((DataSolicitacao.getDate()));
+           // console.log((DataSolicitacao.getDate()));
             var arquivo = ('arquivo.txt');
             
-            x.should.belowOrEqual(7); 
-           console.log(DataPublicacao);
+           x.should.belowOrEqual(7); 
+           //console.log(DataPublicacao);
             var submissao = solicitarCertificacao.submissaoDaAvaliacao(DataPublicacao,arquivo);
             submissao.should.be.eql(true);
            
